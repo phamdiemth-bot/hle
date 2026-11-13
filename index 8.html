@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Happiness for Lê 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
+:root{--pink:#ff79b0;--yellow:#ffe477;--blue:#8edcff;--purple:#b9a1ff;--mint:#9cebd0;--ink:#59466e}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:'Nunito',sans-serif;color:var(--ink);overflow-x:hidden;background:linear-gradient(135deg,#ffe5f1,#fff5c9 45%,#e0f7ff)}
+button{font:inherit;border:0;cursor:pointer}
+.page{display:none;min-height:100vh;padding:28px 18px 48px;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.page.active{display:flex;animation:fadeIn .65s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.card{position:relative;z-index:2;width:min(760px,100%);padding:clamp(25px,5vw,48px);border:4px solid #fff;border-radius:34px;background:rgba(255,255,255,.83);box-shadow:0 18px 55px #9d76a533;text-align:center}
+h1,h2,.bubble{font-family:'Baloo 2',cursive}
+h1{font-size:clamp(2.7rem,8vw,5.5rem);line-height:.98;margin:12px 0;color:#ff65a6;text-shadow:3px 4px 0 #ffe0ee}
+h2{font-size:clamp(2rem,6vw,3.5rem);line-height:1.05;margin:8px 0 16px}
+p{font-size:clamp(1rem,2.7vw,1.2rem);line-height:1.7}
+.eyebrow{display:inline-block;background:#fff0a8;padding:8px 17px;border-radius:99px;font-weight:900;letter-spacing:1px;transform:rotate(-2deg)}
+.sub{font-size:1.15rem;font-weight:800}
+.btn{display:inline-block;margin:12px 6px;padding:14px 25px;border-radius:999px;background:linear-gradient(100deg,#ff75ad,#ff9e7c);color:white;font-weight:900;font-size:1.05rem;box-shadow:0 7px 0 #dc5e91,0 12px 22px #ed8db455;transition:.2s;position:relative}
+.btn:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 10px 0 #dc5e91,0 15px 25px #ed8db455}
+.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #dc5e91}
+.btn.alt{background:linear-gradient(100deg,#8cceff,#a99aff);box-shadow:0 7px 0 #7d8fdb,0 12px 22px #9b9bdf55}
+.btn.alt:hover{box-shadow:0 10px 0 #7d8fdb,0 15px 25px #9b9bdf55}
+.mascot{font-size:clamp(5rem,17vw,9rem);display:block;animation:bob 2s ease-in-out infinite;filter:drop-shadow(0 9px 4px #d99ab333)}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-13px) rotate(5deg)}}
+.decor{position:absolute;z-index:1;pointer-events:none;opacity:.8;animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-22px) rotate(9deg)}}
+.d1{top:7%;left:6%;font-size:3rem}.d2{top:13%;right:7%;font-size:2.5rem;animation-delay:1s}.d3{bottom:9%;left:9%;font-size:2.8rem;animation-delay:2s}.d4{bottom:8%;right:8%;font-size:3.2rem;animation-delay:.5s}
+.pill{display:inline-block;background:#e7f9f2;padding:8px 15px;border-radius:99px;font-weight:900;margin:5px}
+.voice-box{background:linear-gradient(135deg,#fff0f7,#eef8ff);border:3px dashed #f7a5cb;border-radius:25px;padding:22px;margin:20px auto;max-width:580px}
+.sound-icon{font-size:3.5rem;display:inline-block;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.15)}}
+.wave{height:38px;display:flex;align-items:center;justify-content:center;gap:5px;margin:10px}
+.wave span{width:6px;height:12px;border-radius:9px;background:#ff83b5;animation:wave .7s ease-in-out infinite alternate}
+.wave span:nth-child(2n){animation-delay:.2s;background:#9b9cff}.wave span:nth-child(3n){animation-delay:.4s;background:#79d9c0}
+@keyframes wave{to{height:35px}}
+.wave.paused span{animation-play-state:paused;height:8px}
+.letter{background:#fffdf6;border:3px solid #ffe29a;border-radius:22px;padding:clamp(20px,4vw,34px);text-align:left;box-shadow:inset 0 0 25px #ffe9b566}
+.letter p{margin:10px 0}
+.envelope{font-size:7rem;display:block;animation:wiggle 1.8s infinite}
+@keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.hidden{display:none!important}
+.final-big{font-size:clamp(2.3rem,7vw,4.5rem);color:#ff69a8;text-shadow:3px 3px #ffe2a1}
+footer{margin-top:22px;font-size:.85rem;opacity:.7;font-weight:800}
+.confetti{position:fixed;top:-20px;width:10px;height:15px;z-index:99;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(780deg);opacity:.2}}
+.pop{position:fixed;z-index:100;pointer-events:none;font-size:25px;animation:pop 1.2s ease-out forwards}
+@keyframes pop{0%{opacity:0;transform:scale(.3) translateY(0)}20%{opacity:1}100%{opacity:0;transform:scale(1.4) translateY(-100px)}}
+@media(max-width:480px){.card{border-radius:25px}.d1{left:2%}.d2{right:2%}.d3{left:2%}.d4{right:2%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="decor d1">🌈</div><div class="decor d2">⭐</div><div class="decor d3">🌼</div><div class="decor d4">💖</div>
+
+<section class="page active" id="page1">
+  <div class="card">
+    <span class="eyebrow">A LITTLE HAPPINESS DELIVERY 💌</span>
+    <span class="mascot" id="firstMascot">🥺</span>
+    <h1>HEY LÊEEEE!!!</h1>
+    <h2 style="color:#8d83e9">WHY ARE YOU SAD, GIRL?!</h2>
+    <p class="sub">Có một chiếc ôm online siêu to đang được gửi đến Lê đây!</p>
+    <p>📦 Người gửi: Thuỳ Anh & Diễm<br>💗 Nội dung: 100% yêu thương, 0% buồn bã</p>
+    <button class="btn" onclick="goTo(2); confettiBurst()">CLICK HERE TO GET SOME HAPPINESS! ✨</button>
+    <footer>Warning: May cause uncontrollable smiling 🤭</footer>
+  </div>
+</section>
+
+<section class="page" id="page2">
+  <div class="card">
+    <span class="eyebrow">INCOMING LOVE & HUGS 💗</span>
+    <h2>LEEEEE ƠIIII!</h2>
+    <div class="voice-box">
+      <div class="sound-icon">🎤💞</div>
+      <div class="wave paused" id="wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <p id="voiceStatus" class="sub">Hai đứa có vài lời muốn nhắn gửi đến Lê nè...</p>
+      <button class="btn" onclick="playVoice()">▶ PLAY VOICE MESSAGE</button>
+      <button class="btn alt" onclick="stopVoice()">⏸ STOP</button>
+    </div>
+    <p>🔊 Nhớ bật âm lượng điện thoại nha!</p>
+    <button class="btn alt" onclick="goTo(3)">I'M READY FOR MY LETTER 💌</button>
+    <footer>Ấn Play Voice nếu điện thoại không tự phát giọng nói nhé!</footer>
+  </div>
+</section>
+
+<section class="page" id="page3">
+  <div class="card">
+    <span class="eyebrow">A SECRET MESSAGE FOR YOU</span>
+    <div id="closedLetter">
+      <span class="envelope">💌</span>
+      <h2 style="color:#ff75aa">TO MY DEAREST LÊ</h2>
+      <p>Một bức thư nhỏ xíu nhưng chứa tình thương to đùng từ Thuỳ Anh và Diễm.</p>
+      <button class="btn" onclick="openLetter()">OPEN YOUR LITTLE SURPRISE! 💗</button>
+    </div>
+    <div id="openLetter" class="hidden">
+      <div class="letter">
+        <h2 style="text-align:center;color:#ff75aa">Dear Lê, 💗</h2>
+        <p>Thôi nào, đừng buồn nữa cô gái của chúng tôi ơiiii!</p>
+        <p>An Đào làm Lê buồn thì cứ kệ An Đào đi nhé. Đừng để một người làm ảnh hưởng đến nụ cười xinh đẹp của Lê nữa.</p>
+        <p>Lê phải nhớ rằng Lê luôn có Thuỳ Anh và Diễm ở đây. Hai đứa không để Lê cô đơn đâu! Buồn thì có thể khóc một chút, có thể than thở thật nhiều, nhưng sau đó phải đứng dậy và vui vẻ trở lại nhé!</p>
+        <p>Lê xứng đáng được yêu thương, được trân trọng và được hạnh phúc. 🥹</p>
+        <p style="text-align:center;font-weight:900;color:#ed6ca5">From your two personal happiness providers,<br>THUỲ ANH & DIỄM 💗</p>
+        <p><b>P.S.</b> Nếu vẫn buồn thì gọi hai đứa ngay lập tức. Chúng tôi nhận nhiệm vụ dỗ Lê 24/7! 🤣</p>
+      </div>
+      <button class="btn" onclick="goTo(4); confettiBurst()">SEND ME MORE HAPPINESS! 🎉</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page4">
+  <div class="card">
+    <span class="eyebrow">HAPPINESS LEVEL: 1000% 🌈</span>
+    <span class="mascot">🥳💃🕺</span>
+    <h1 class="final-big">MISSION COMPLETE!</h1>
+    <h2 style="color:#8d83e9">MAKE LÊ HAPPY! 💖</h2>
+    <div style="margin:18px 0">
+      <span class="pill">SMILEEEE! 😆</span><span class="pill">YOU ARE LOVED! 💗</span><br>
+      <span class="pill">NO MORE SADNESS! 🌼</span><span class="pill">TEAM LÊ FOREVER! 🫶</span>
+    </div>
+    <p>Gửi Lê một nghìn cái ôm, một triệu chiếc hôn và vô hạn yêu thương!</p>
+    <button class="btn" onclick="celebrate()">I'M HAPPY NOWWWW! 💗</button>
+    <p id="finalMessage" class="sub" aria-live="polite"></p>
+    <button class="btn alt" onclick="goTo(1)">WATCH AGAIN ↻</button>
+    <footer>Made with lots of love by Thuỳ Anh & Diễm ✨</footer>
+  </div>
+</section>
+
+<script>
+const voiceText = "Lê ơiiii! Đừng buồn nữa nhaaaa! Vui lên nào! An Đào làm Lê buồn thì cứ kệ An Đào đi! Không đáng để Lê phải buồn đâu! Lê còn có Thuỳ Anh với Diễm ở đây mà! Hai đứa luôn ở bên Lê, thương Lê và sẵn sàng làm Lê cười mỗi ngày. Nào, cười lên một cái cho thế giới sáng bừng nào! Yêu Lê nhấtttt! Muahhh!";
+let currentUtterance = null;
+
+function goTo(number){
+  stopVoice();
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page'+number).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(number===2) document.getElementById('voiceStatus').textContent='Hai đứa có vài lời muốn nhắn gửi đến Lê nè...';
+}
+function playVoice(){
+  if(!('speechSynthesis' in window)){
+    document.getElementById('voiceStatus').textContent=voiceText;
+    return;
+  }
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(voiceText);
+  utterance.lang='vi-VN';
+  utterance.rate=0.92;
+  utterance.pitch=1.25;
+  const voices=speechSynthesis.getVoices();
+  const vietnamese=voices.find(v=>v.lang.toLowerCase().startsWith('vi'));
+  if(vietnamese) utterance.voice=vietnamese;
+  utterance.onstart=()=>{
+    document.getElementById('voiceStatus').textContent='Đang gửi thật nhiều yêu thương đến Lê... 💗';
+    document.getElementById('wave').classList.remove('paused');
+  };
+  utterance.onend=()=>{
+    document.getElementById('voiceStatus').textContent='Hết lời nhắn rồi! Nhưng tình thương thì còn vô hạn nha! 💕';
+    document.getElementById('wave').classList.add('paused');
+  };
+  utterance.onerror=()=>{
+    document.getElementById('voiceStatus').textContent='Trình duyệt chưa phát được voice. Lê đọc lời nhắn bên dưới nha: '+voiceText;
+    document.getElementById('wave').classList.add('paused');
+  };
+  currentUtterance=utterance;
+  speechSynthesis.speak(utterance);
+}
+function stopVoice(){
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+  const wave=document.getElementById('wave');
+  if(wave) wave.classList.add('paused');
+}
+function openLetter(){
+  document.getElementById('closedLetter').classList.add('hidden');
+  document.getElementById('openLetter').classList.remove('hidden');
+  confettiBurst();
+}
+function confettiBurst(){
+  const symbols=['💖','💛','💙','💜','🌸','⭐','🌈','✨'];
+  for(let i=0;i<65;i++){
+    const el=document.createElement('div');
+    el.className='confetti';
+    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=Math.random()*100+'vw';
+    el.style.fontSize=(12+Math.random()*18)+'px';
+    el.style.animationDuration=(2.2+Math.random()*2.8)+'s';
+    el.style.animationDelay=(Math.random()*.7)+'s';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),6000);
+  }
+}
+function celebrate(){
+  confettiBurst();
+  document.getElementById('finalMessage').textContent='THAT’S MY GIRLLLL!!! LOVE YOU LÊEEEE! 🥹💗';
+  for(let i=0;i<18;i++){
+    setTimeout(()=>{
+      const el=document.createElement('div');
+      el.className='pop';
+      el.textContent=['💗','🫶','🥳','🌈','😘'][Math.floor(Math.random()*5)];
+      el.style.left=(10+Math.random()*80)+'vw';
+      el.style.top=(30+Math.random()*50)+'vh';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),1300);
+    },i*65);
+  }
+}
+</script>
+</body>
+</html>
